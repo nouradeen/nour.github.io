@@ -1,0 +1,71 @@
+/* elementen h1-h6 använder sans-serif-typsnitt */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Övrig text använder typsnitt Candara, Verdana, sans-serif */
+body,
+p,
+li,
+td,
+th,
+caption {
+    font-family: Candara, Verdana, sans-serif;
+}
+
+
+/* Tabell 1: ljusröd bakgrund + ytterram */
+.tabell1 {
+    background-color: #ffcccc;
+    border: 1px solid black;
+}
+
+/* Tabell 2: ljusorange bakgrund + ytterram */
+.tabell2 {
+    background-color: #ffcc99;
+    border: 1px solid black;
+}
+
+/* Endast underkant på rubriker i tabell 2 */
+.tabell2 thead tr th {
+    border-bottom: 1px solid black;
+}
+
+/* Vänsterjustera tabellrubriker */
+.tabell1 caption,
+.tabell2 caption {
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Svart bakgrund & vit text i tabell 2:s fot */
+.tabell2 tfoot .foot {
+    background-color: black;
+    color: white;
+}
+
+
+/* Högerjusterad och grön text */
+#source {
+    color: #009900;
+    text-align: right;
+}
+
+
+/* Färgändring vid hover */
+a:hover {
+    color: white;
+    background-color: #009900;
+    text-decoration: underline;
+}
+
+/* Grundstil för länkar med mjuk övergång */
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}

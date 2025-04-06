@@ -1,0 +1,124 @@
+/* Generella stilar för hela sidan */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+/* Rubrikstilar */
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #7f8c8d;
+}
+
+/* Formulärstilar */
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Label-stilar */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Input-fältstilar */
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* Textarea-specifika stilar */
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Radio-knappstilar */
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+input[type="radio"]+label {
+    display: inline-block;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+/* Knappstilar */
+input[type="submit"],
+input[type="reset"] {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background-color: #2980b9;
+}
+
+input[type="reset"] {
+    background-color: #95a5a6;
+}
+
+input[type="reset"]:hover {
+    background-color: #7f8c8d;
+}
+
+/* Responsiv design för mindre skärmar */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

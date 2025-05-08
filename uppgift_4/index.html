@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startsida</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/bokkatalog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles specific to the home page */
+        .home-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .news-section {
+            display: grid;
+            gap: 15px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--accent-orange);
+            margin-top: 10px;
+        }
+
+        /* Remove underlines from links */
+        a {
+            text-decoration: none;
+        }
+
+        /* Override header styles to match bokkatalog.html */
+        header {
+            background-color: transparent;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive styles for featured book */
+        @media (max-width: 768px) {
+            .featured-book {
+                flex-direction: column;
+            }
+            .featured-book-image {
+                flex: 0 0 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><a href="index.html"><img src="images/logo.svg" alt="Books Logo" width="150"></a></div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Sök">
+                <button class="search-button"><i class="fas fa-search"></i></button>
+            </div>
+            <button class="menu-button"><i class="fas fa-bars"></i></button>
+        </header>
+
+        <h1 class="title">Dagens Bok</h1>
+
+        <div class="content">
+            <div class="featured-book" style="display: flex; align-items: center; margin-bottom: 30px; background-color: var(--card-bg); padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                <div class="featured-book-image" style="flex: 0 0 200px; margin-right: 20px;">
+                    <img src="images/sjärnklart.jpg" alt="Stjärnklart av Fredrik Backman" style="width: 100%; border-radius: 4px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);">
+                </div>
+                <div>
+                    <h2 style="color: var(--primary-brown); margin-bottom: 10px;">Stjärnklart</h2>
+                    <h3 style="color: var(--text-dark); margin-bottom: 15px;">Fredrik Backman</h3>
+                    <p class="home-header" style="margin-bottom: 15px;">En gripande berättelse om familj, vänskap och att hitta sin plats i världen. Fredrik Backmans senaste roman tar oss med på en resa genom livets upp- och nedgångar.</p>
+                    <p style="font-weight: bold; color: var(--accent-orange); font-size: 1.2rem;">229 kr</p>
+                    <a href="pages/bokkatalog.html" style="display: inline-block; margin-top: 15px; padding: 8px 15px; background-color: var(--accent-orange); color: white; border-radius: 4px; text-decoration: none; font-weight: bold;">Läs mer</a>
+                </div>
+            </div>
+
+            <section class="main-content">
+                <h2>Populära Böcker</h2>
+                <div class="book-grid">
+                    <a href="pages/bokkatalog.html" class="book-card">
+                        <div class="book-cover" style="background-image: url('images/skuggans hemlighet.jpg'); background-size: cover; background-position: center;"></div>
+                        <div class="book-info">
+                            <h3>Skuggans Hemlighet</h3>
+                            <p>Astrid Lindgren</p>
+                            <p class="price">299 kr</p>
+                        </div>
+                    </a>
+                    <a href="pages/bokkatalog.html" class="book-card">
+                        <div class="book-cover" style="background-image: url('images/midnattssjärnan.jpg'); background-size: cover; background-position: center;"></div>
+                        <div class="book-info">
+                            <h3>Midnattsstjärnan</h3>
+                            <p>Jonas Gardell</p>
+                            <p class="price">349 kr</p>
+                        </div>
+                    </a>
+                    <a href="pages/bokkatalog.html" class="book-card">
+                        <div class="book-cover" style="background-image: url('images/den sistan resan.jpg'); background-size: cover; background-position: center;"></div>
+                        <div class="book-info">
+                            <h3>Den Sista Resan</h3>
+                            <p>Camilla Läckberg</p>
+                            <p class="price">279 kr</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <section class="main-content">
+                <h2>Nyheter</h2>
+                <div class="news-section">
+                    <div class="book-card">
+                        <div class="book-cover" style="background-image: url('images/vindens skugga.jpg'); background-size: cover; background-position: center;"></div>
+                        <div class="book-info">
+                            <h3>Ny bokutgivning</h3>
+                            <p>Vindens Skugga av Stieg Larsson nu tillgänglig!</p>
+                            <p class="price">349 kr</p>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover" style="background-image: url('images/glasbarnen.jpg'); background-size: cover; background-position: center;"></div>
+                        <div class="book-info">
+                            <h3>Författarbesök</h3>
+                            <p>Kristina Ohlsson signerar Glasbarnen den 15 maj</p>
+                            <p class="price">179 kr</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-links">
+            <a href="pages/om_oss.html">Om Oss</a>
+            <a href="pages/kontakt.html">Kontakta</a>
+            <a href="pages/bokkatalog.html">Bokkatalog</a>
+            <a href="pages/inspiration.html">Inspiration</a>
+            <a href="pages/nyhetsbrev.html">Nyhetsbrev</a>
+        </div>
+        <p>Legal information</p>
+        <p>© 2023 Nour Al Dine Hassan</p>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+</body>
+</html>

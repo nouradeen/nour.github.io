@@ -1,0 +1,120 @@
+/* Styles for the language settings pages */
+
+.language-section {
+    margin-bottom: 40px;
+}
+
+.language-section h2 {
+    font-size: 1.8rem;
+    color: var(--primary-brown);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--accent-orange);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.language-options {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.language-option {
+    flex: 1;
+    min-width: 250px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.language-option.active {
+    border: 2px solid var(--accent-orange);
+}
+
+.language-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.language-flag {
+    font-size: 2rem;
+    color: var(--accent-orange);
+    margin-bottom: 15px;
+}
+
+.language-option h3 {
+    margin-bottom: 10px;
+    color: var(--primary-brown);
+}
+
+.language-option p {
+    color: var(--text-dark);
+    opacity: 0.8;
+}
+
+.selected-indicator {
+    margin-top: 15px;
+    color: var(--accent-orange);
+    font-weight: bold;
+}
+
+/* Info section */
+.info-section {
+    margin-bottom: 40px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.info-section h2 {
+    font-size: 1.5rem;
+    color: var(--primary-brown);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.info-section p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+/* Action section */
+.action-section {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.back-button {
+    display: inline-block;
+    background-color: var(--primary-brown);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: var(--accent-orange);
+}
+
+.back-button i {
+    margin-right: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .language-options {
+        flex-direction: column;
+    }
+    
+    .language-option {
+        min-width: 100%;
+    }
+}

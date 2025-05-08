@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtrering & Sökning</title>
+    <link rel="stylesheet" href="../css/bokkatalog.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+    <link rel="stylesheet" href="../css/filtrering.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><a href="../index.html"><img src="../images/logo.svg" alt="Books Logo" width="150"></a></div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Sök">
+                <button class="search-button"><i class="fas fa-search"></i></button>
+            </div>
+            <button class="menu-button"><i class="fas fa-bars"></i></button>
+        </header>
+
+        <h1 class="title">Filtrering & Sökning</h1>
+
+        <div class="content">
+            <section class="filter-section">
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <h3>Genre</h3>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="genre" value="roman">
+                                <span>Roman</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="genre" value="deckare">
+                                <span>Deckare</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="genre" value="fantasy">
+                                <span>Fantasy</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="genre" value="sci-fi">
+                                <span>Science Fiction</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="genre" value="fakta">
+                                <span>Fakta</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Pris</h3>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="radio" name="price" value="0-100">
+                                <span>0 - 100 kr</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="price" value="100-200">
+                                <span>100 - 200 kr</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="price" value="200-300">
+                                <span>200 - 300 kr</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="radio" name="price" value="300+">
+                                <span>300+ kr</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Format</h3>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="format" value="hardcover">
+                                <span>Inbunden</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="format" value="paperback">
+                                <span>Pocket</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="format" value="ebook">
+                                <span>E-bok</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="format" value="audiobook">
+                                <span>Ljudbok</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-actions">
+                        <button class="apply-filter-btn">Tillämpa Filter</button>
+                        <button class="reset-filter-btn">Återställ</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sort-section">
+                <div class="sort-container">
+                    <h3>Sortera efter:</h3>
+                    <div class="sort-options">
+                        <label class="sort-option">
+                            <input type="radio" name="sort" value="relevance" checked>
+                            <span>Relevans</span>
+                        </label>
+                        <label class="sort-option">
+                            <input type="radio" name="sort" value="price-low">
+                            <span>Pris: Lågt till högt</span>
+                        </label>
+                        <label class="sort-option">
+                            <input type="radio" name="sort" value="price-high">
+                            <span>Pris: Högt till lågt</span>
+                        </label>
+                        <label class="sort-option">
+                            <input type="radio" name="sort" value="newest">
+                            <span>Nyast först</span>
+                        </label>
+                        <label class="sort-option">
+                            <input type="radio" name="sort" value="bestselling">
+                            <span>Bästsäljande</span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="results-section">
+                <h2>Sökresultat</h2>
+                <div class="book-grid">
+                    <!-- Book cards will be dynamically generated here -->
+                    <div class="book-card">
+                        <div class="book-cover"></div>
+                        <div class="book-info">
+                            <h3>Skuggans Hemlighet</h3>
+                            <p>Astrid Lindgren</p>
+                            <p>299 kr</p>
+                            <div class="book-format">Inbunden</div>
+                            <div class="book-genre">Roman</div>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover"></div>
+                        <div class="book-info">
+                            <h3>Nattens Väktare</h3>
+                            <p>Henning Mankell</p>
+                            <p>199 kr</p>
+                            <div class="book-format">Pocket</div>
+                            <div class="book-genre">Deckare</div>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover"></div>
+                        <div class="book-info">
+                            <h3>Drakarnas Tid</h3>
+                            <p>Maria Gripe</p>
+                            <p>249 kr</p>
+                            <div class="book-format">E-bok</div>
+                            <div class="book-genre">Fantasy</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="../js/navigation.js"></script>
+    <script src="../js/filtrering.js"></script>
+</body>
+</html>
+
+

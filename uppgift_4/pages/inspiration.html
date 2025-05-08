@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspiration</title>
+    <link rel="stylesheet" href="../css/bokkatalog.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+    <link rel="stylesheet" href="../css/inspiration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><a href="../index.html"><img src="../images/logo.svg" alt="Books Logo" width="150"></a></div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Sök">
+                <button class="search-button"><i class="fas fa-search"></i></button>
+            </div>
+            <button class="menu-button"><i class="fas fa-bars"></i></button>
+        </header>
+
+        <h1 class="title">Inspiration</h1>
+
+        <div class="content">
+            <section class="selection-section">
+                <h2>Välj Genre:</h2>
+                <div class="option-buttons">
+                    <button class="option-btn">Roman</button>
+                    <button class="option-btn">Fantasy</button>
+                    <button class="option-btn">Deckare</button>
+                    <button class="option-btn">Humor</button>
+                    <button class="option-btn">Fakta</button>
+                </div>
+            </section>
+
+            <section class="selection-section">
+                <h2>Välj Mood:</h2>
+                <div class="option-buttons">
+                    <button class="option-btn">Glad</button>
+                    <button class="option-btn">Ledsen</button>
+                    <button class="option-btn">Lugn</button>
+                    <button class="option-btn">Spännande</button>
+                    <button class="option-btn">Skräck</button>
+                    </div>
+            </section>
+
+            <section class="results-section">
+                <h2>Bok baserat på ovan svar:</h2>
+                <div class="book-grid inspiration-books">
+                    <div class="book-card">
+                        <div class="book-cover"></div>
+                        <div class="book-info">
+                            <h3>Sommarens Skratt</h3>
+                            <p>Jonas Jonasson</p>
+                            <p>299 kr</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover"></div>
+                        <div class="book-info">
+                            <h3>Havets Visdom</h3>
+                            <p>Majgull Axelsson</p>
+                            <p>199 kr</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover"></div>
+                        <div class="book-info">
+                            <h3>Ensamhetens Dal</h3>
+                            <p>Per Olov Enquist</p>
+                            <p>249 kr</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reviews-link-section">
+                <div class="reviews-link-container">
+                    <h2>Vill du läsa recensioner?</h2>
+                    <p>Besök vår recensionssida för att läsa vad andra tycker om böckerna.</p>
+                    <a href="recensioner.html" class="reviews-link-button">
+                        <i class="fas fa-book-reader"></i> Läs recensioner och lästips
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Book data for different genre and mood combinations
+            const booksByGenreAndMood = {
+                "Roman": {
+                    "Glad": [
+                        {
+                            title: "Hundraåringen som klev ut genom fönstret och försvann",
+                            author: "Jonas Jonasson",
+                            price: "129 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Britt-Marie var här",
+                            author: "Fredrik Backman",
+                            price: "149 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "En man som heter Ove",
+                            author: "Fredrik Backman",
+                            price: "139 kr",
+                            rating: 5
+                        }
+                    ],
+                    "Ledsen": [
+                        {
+                            title: "Låt den rätte komma in",
+                            author: "John Ajvide Lindqvist",
+                            price: "159 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Torka aldrig tårar utan handskar",
+                            author: "Jonas Gardell",
+                            price: "169 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Allt jag inte minns",
+                            author: "Jonas Hassen Khemiri",
+                            price: "145 kr",
+                            rating: 4
+                        }
+                    ],
+                    "Lugn": [
+                        {
+                            title: "Sommarboken",
+                            author: "Tove Jansson",
+                            price: "119 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Konsten att höra hjärtslag",
+                            author: "Jan-Philipp Sendker",
+                            price: "139 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Stoner",
+                            author: "John Williams",
+                            price: "149 kr",
+                            rating: 5
+                        }
+                    ],
+                    "Spännande": [
+                        {
+                            title: "Röda rummet",
+                            author: "August Strindberg",
+                            price: "129 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Händelser vid vatten",
+                            author: "Kerstin Ekman",
+                            price: "159 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Utvandrarna",
+                            author: "Vilhelm Moberg",
+                            price: "169 kr",
+                            rating: 5
+                        }
+                    ],
+                    "Skräck": [
+                        {
+                            title: "Karin Boyes samlade verk",
+                            author: "Karin Boye",
+                            price: "199 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Rörelsen",
+                            author: "John Ajvide Lindqvist",
+                            price: "179 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Hanteringen av odöda",
+                            author: "John Ajvide Lindqvist",
+                            price: "169 kr",
+                            rating: 4
+                        }
+                    ]
+                },
+                "Fantasy": {
+                    "Glad": [
+                        {
+                            title: "Cirkeln",
+                            author: "Mats Strandberg & Sara Bergmark Elfgren",
+                            price: "149 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Trollkarlens hatt",
+                            author: "Tove Jansson",
+                            price: "129 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Nils Holgerssons underbara resa",
+                            author: "Selma Lagerlöf",
+                            price: "139 kr",
+                            rating: 4
+                        }
+                    ],
+                    "Ledsen": [
+                        {
+                            title: "Korpringarna",
+                            author: "Siri Pettersen",
+                            price: "169 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Eld",
+                            author: "Mats Strandberg & Sara Bergmark Elfgren",
+                            price: "159 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Nyckeln",
+                            author: "Mats Strandberg & Sara Bergmark Elfgren",
+                            price: "159 kr",
+                            rating: 4
+                        }
+                    ],
+                    "Lugn": [
+                        {
+                            title: "Trollvinter",
+                            author: "Tove Jansson",
+                            price: "129 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Pappersstäder",
+                            author: "John Green",
+                            price: "149 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Kometen kommer",
+                            author: "Tove Jansson",
+                            price: "129 kr",
+                            rating: 5
+                        }
+                    ],
+                    "Spännande": [
+                        {
+                            title: "Odinsbarn",
+                            author: "Siri Pettersen",
+                            price: "169 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Röta",
+                            author: "Siri Pettersen",
+                            price: "169 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Kraften",
+                            author: "Siri Pettersen",
+                            price: "169 kr",
+                            rating: 4
+                        }
+                    ],
+                    "Skräck": [
+                        {
+                            title: "Kråkflickan",
+                            author: "Erik Axl Sund",
+                            price: "179 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Hungerspelen",
+                            author: "Suzanne Collins",
+                            price: "159 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Fatta Eld",
+                            author: "Suzanne Collins",
+                            price: "159 kr",
+                            rating: 4
+                        }
+                    ]
+                },
+                "Deckare": {
+                    "Glad": [
+                        {
+                            title: "Mördare utan ansikte",
+                            author: "Henning Mankell",
+                            price: "149 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Den som dödar draken",
+                            author: "Leif GW Persson",
+                            price: "159 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Kvinna med födelsemärke",
+                            author: "Håkan Nesser",
+                            price: "139 kr",
+                            rating: 5
+                        }
+                    ],
+                    "Ledsen": [
+                        {
+                            title: "Män som hatar kvinnor",
+                            author: "Stieg Larsson",
+                            price: "169 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Flickan som lekte med elden",
+                            author: "Stieg Larsson",
+                            price: "169 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Luftslottet som sprängdes",
+                            author: "Stieg Larsson",
+                            price: "169 kr",
+                            rating: 5
+                        }
+                    ],
+                    "Lugn": [
+                        {
+                            title: "Borkmanns punkt",
+                            author: "Håkan Nesser",
+                            price: "139 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Carambole",
+                            author: "Håkan Nesser",
+                            price: "139 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Svalan, katten, rosen, döden",
+                            author: "Håkan Nesser",
+                            price: "139 kr",
+                            rating: 5
+                        }
+                    ],
+                    "Spännande": [
+                        {
+                            title: "Snabba cash",
+                            author: "Jens Lapidus",
+                            price: "159 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Aldrig fucka upp",
+                            author: "Jens Lapidus",
+                            price: "159 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Livet deluxe",
+                            author: "Jens Lapidus",
+                            price: "159 kr",
+                            rating: 4
+                        }
+                    ],
+                    "Skräck": [
+                        {
+                            title: "Det som göms i snö",
+                            author: "Carin Gerhardsen",
+                            price: "169 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Hypnotisören",
+                            author: "Lars Kepler",
+                            price: "179 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Paganinikontraktet",
+                            author: "Lars Kepler",
+                            price: "179 kr",
+                            rating: 4
+                        }
+                    ]
+                },
+                "Humor": {
+                    "Glad": [
+                        {
+                            title: "Folk med ångest",
+                            author: "Fredrik Backman",
+                            price: "149 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Min mormor hälsar och säger förlåt",
+                            author: "Fredrik Backman",
+                            price: "149 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Analfabeten som kunde räkna",
+                            author: "Jonas Jonasson",
+                            price: "139 kr",
+                            rating: 5
+                        }
+                    ],
+                    "Ledsen": [
+                        {
+                            title: "Torka aldrig tårar utan handskar",
+                            author: "Jonas Gardell",
+                            price: "169 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Ett ufo gör entré",
+                            author: "Jonas Gardell",
+                            price: "149 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Jenny",
+                            author: "Jonas Gardell",
+                            price: "139 kr",
+                            rating: 4
+                        }
+                    ],
+                    "Lugn": [
+                        {
+                            title: "Mio, min Mio",
+                            author: "Astrid Lindgren",
+                            price: "119 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Pippi Långstrump",
+                            author: "Astrid Lindgren",
+                            price: "119 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Emil i Lönneberga",
+                            author: "Astrid Lindgren",
+                            price: "119 kr",
+                            rating: 5
+                        }
+                    ],
+                    "Spännande": [
+                        {
+                            title: "Hundraettåringen som tänkte att han tänkte för mycket",
+                            author: "Jonas Jonasson",
+                            price: "149 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Mördar-Anders och hans vänner",
+                            author: "Jonas Jonasson",
+                            price: "139 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Hittebarnet",
+                            author: "Jonas Jonasson",
+                            price: "149 kr",
+                            rating: 4
+                        }
+                    ],
+                    "Skräck": [
+                        {
+                            title: "Cirkeln",
+                            author: "Mats Strandberg & Sara Bergmark Elfgren",
+                            price: "149 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Hemmet",
+                            author: "Mats Strandberg",
+                            price: "159 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Färjan",
+                            author: "Mats Strandberg",
+                            price: "159 kr",
+                            rating: 4
+                        }
+                    ]
+                },
+                "Fakta": {
+                    "Glad": [
+                        {
+                            title: "Factfulness",
+                            author: "Hans Rosling",
+                            price: "179 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Sapiens: En kort historik över mänskligheten",
+                            author: "Yuval Noah Harari",
+                            price: "189 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Homo Deus: En kort historik över morgondagen",
+                            author: "Yuval Noah Harari",
+                            price: "189 kr",
+                            rating: 4
+                        }
+                    ],
+                    "Ledsen": [
+                        {
+                            title: "Jag är Zlatan Ibrahimović",
+                            author: "Zlatan Ibrahimović & David Lagercrantz",
+                            price: "159 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Min historia",
+                            author: "Michelle Obama",
+                            price: "199 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Ett jävla solsken",
+                            author: "Fatima Bremmer",
+                            price: "169 kr",
+                            rating: 4
+                        }
+                    ],
+                    "Lugn": [
+                        {
+                            title: "Konsten att vara snäll",
+                            author: "Stefan Einhorn",
+                            price: "129 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Lugn av naturen",
+                            author: "Åsa Ottosson & Mats Ottosson",
+                            price: "179 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Mindfulness i vardagen",
+                            author: "Titti Holmer",
+                            price: "149 kr",
+                            rating: 4
+                        }
+                    ],
+                    "Spännande": [
+                        {
+                            title: "Rymdens gåtor",
+                            author: "Ulf Danielsson",
+                            price: "189 kr",
+                            rating: 5
+                        },
+                        {
+                            title: "Universum i din hand",
+                            author: "Christophe Galfard",
+                            price: "179 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Vad är tid, vad är rum?",
+                            author: "Ulf Danielsson",
+                            price: "169 kr",
+                            rating: 4
+                        }
+                    ],
+                    "Skräck": [
+                        {
+                            title: "Ondskans historia",
+                            author: "Catharina Ingelman-Sundberg",
+                            price: "179 kr",
+                            rating: 4
+                        },
+                        {
+                            title: "Seriemördare",
+                            author: "Peter Englund",
+                            price: "169 kr",
+                            rating: 3
+                        },
+                        {
+                            title: "Döden är en man",
+                            author: "Tobias Hübinette",
+                            price: "159 kr",
+                            rating: 4
+                        }
+                    ]
+                }
+            };
+
+            // Make option buttons selectable
+            const optionButtons = document.querySelectorAll('.option-btn:not(.more-btn)');
+            let selectedGenre = null;
+            let selectedMood = null;
+
+            optionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Toggle selected state within its group
+                    const parentSection = this.closest('.selection-section');
+                    const buttonsInSection = parentSection.querySelectorAll('.option-btn:not(.more-btn)');
+
+                    buttonsInSection.forEach(btn => {
+                        btn.classList.remove('selected');
+                    });
+
+                    this.classList.add('selected');
+
+                    // Update selected genre or mood
+                    if (parentSection.querySelector('h2').textContent.includes('Genre')) {
+                        selectedGenre = this.textContent;
+                    } else if (parentSection.querySelector('h2').textContent.includes('Mood')) {
+                        selectedMood = this.textContent;
+                    }
+
+                    // Update book recommendations if both genre and mood are selected
+                    if (selectedGenre && selectedMood) {
+                        updateBookRecommendations(selectedGenre, selectedMood);
+                    }
+                });
+            });
+
+            // Function to update book recommendations based on genre and mood
+            function updateBookRecommendations(genre, mood) {
+                const booksContainer = document.querySelector('.inspiration-books');
+
+                // Clear current books
+                booksContainer.innerHTML = '';
+
+                // Check if we have books for this combination
+                if (booksByGenreAndMood[genre] && booksByGenreAndMood[genre][mood]) {
+                    const books = booksByGenreAndMood[genre][mood];
+
+                    // Update section title
+                    document.querySelector('.results-section h2').textContent =
+                        `Böcker för ${genre} och ${mood} mood:`;
+
+                    // Add books to the container
+                    books.forEach(book => {
+                        const bookCard = document.createElement('div');
+                        bookCard.className = 'book-card';
+
+                        // Create HTML for the book card with image
+                        // Convert book title to a filename-friendly format
+                        const imageFilename = book.title.toLowerCase()
+                            .replace(/[åä]/g, 'a')
+                            .replace(/[ö]/g, 'o')
+                            .replace(/[^a-z0-9]/g, '_')
+                            .replace(/_+/g, '_')
+                            .replace(/^_|_$/g, '');
+
+                        // Function to find the best matching image filename
+                        function findBestMatchingImage(title) {
+                            // List of available image filenames (from the directory listing)
+                            const availableImages = [
+                                "Aldrig fucka upp.jpg", "Allt jag inte minns.jpg", "Analfabeten som kunde räkna.jpg",
+                                "Borkmanns punk.jpg", "Britt-Marie var hä.jpg", "Carambole.jpg", "Cirkeln.jpg",
+                                "den sistan resan.jpg", "Den som dödar draken.jpg", "Det som göms i snö.jpg",
+                                "Döden är en man.jpg", "Eld.jpg", "Emil i Lönneberg.jpg", "En man som heter Ove.jpg",
+                                "Ett jävla solsken.jpg", "Ett ufo gör entré.jpg", "Factfulness.jpg", "Färjan.jpg",
+                                "Fatta Eld.jpg", "Flickan som lekte med elden.jpg", "Folk med ångest.jpg",
+                                "glasbarnen.jpg", "Händelser vid vatten.jpg", "Hanteringen av odöda.jpg",
+                                "Hemmet.jpg", "Hittebarnet.jpg", "Homo Deus En kort historik över morgondagen.jpg",
+                                "Hundraåringen som klev ut genom fönstret och försvann.jpg",
+                                "Hundraettåringen som tänkte att han tänkte för mycke.jpg", "Hungerspelen.jpg",
+                                "Hypnotisören.jpg", "Jag är Zlatan Ibrahimović.jpg", "Jenny.jpg",
+                                "Karin Boyes samlade verk.jpg", "Kometen kommer.jpg", "Konsten att höra hjärtslag.jpg",
+                                "Konsten att vara snäll.jpg", "Korpringarna.jpg", "Kraften.jpg", "Kråkflickan.jpg",
+                                "Kvinna med födelsemärke.jpg", "Låt den rätte komma in.jpg", "Livet deluxe.jpg",
+                                "Luftslottet som sprängdes.jpg", "Lugn av naturen.jpg", "Män som hatar kvinnor.jpg",
+                                "midnattssjärnan.jpg", "Min historia.jpg", "Min mormor hälsar och säger förlåt.jpg",
+                                "mindfulness i vardagen.jpg", "Mio, min Mio.jpg", "Mördar-Anders och hans vänner.jpg",
+                                "Mördare utan ansikte.jpg", "nattankare.jpg", "Nils Holgerssons underbara resa.jpg",
+                                "Nyckeln.jpg", "Odinsbarn.jpg", "Ondskans historia.jpg", "Paganinikontraktet.jpg",
+                                "Pappersstäder.jpg", "Pippi Långstrump.jpg", "Röda rummet.jpg", "Rörelsen.jpg",
+                                "Röta.jpg", "Rymdens gåtor.jpg", "Sapiens En kort historik över mänskligheten.jpg",
+                                "Seriemördare.jpg", "sjärnklart.jpg", "skuggans hemlighet.jpg", "Snabba cash.jpg",
+                                "Sommarboken.jpg", "Stoner.jpg", "Svalan, katten, rosen, döde.jpg",
+                                "Torka aldrig tårar utan handska.jpg", "Torka aldrig tårar utan handskar.jpg",
+                                "Trollkarlens hatt.jpg", "Trollvinter.jpg", "Universum i din hand.jpg",
+                                "Utvandrarna.jpg", "Vad är tid, vad är rum.jpg", "vindens skugga.jpg"
+                            ];
+
+                            // First try exact match
+                            const exactMatch = availableImages.find(img =>
+                                img.toLowerCase() === `${title.toLowerCase()}.jpg`);
+                            if (exactMatch) return exactMatch;
+
+                            // Try to find partial matches
+                            const partialMatches = availableImages.filter(img =>
+                                img.toLowerCase().includes(title.toLowerCase().substring(0, Math.min(15, title.length))) ||
+                                title.toLowerCase().includes(img.toLowerCase().replace('.jpg', '')));
+
+                            if (partialMatches.length > 0) {
+                                // Return the closest match by length
+                                return partialMatches.reduce((best, current) =>
+                                    Math.abs(current.length - title.length) < Math.abs(best.length - title.length)
+                                    ? current : best
+                                );
+                            }
+
+                            // If no match found, return a default image or null
+                            return null;
+                        }
+
+                        // Find the best matching image for this book
+                        const bestMatchImage = findBestMatchingImage(book.title);
+                        const imagePath = bestMatchImage ? `../images/${bestMatchImage}` : null;
+
+                        // Create the book card HTML
+                        const bookCoverHTML = `
+                            <div class="book-cover" style="background-image: url('${imagePath}'); background-size: cover; background-position: center;">
+                                <div class="fallback-cover" style="height: 100%; display: ${imagePath ? 'none' : 'flex'}; align-items: center; justify-content: center; background-color: var(--accent-orange); color: white; text-align: center; padding: 10px;">
+                                    ${book.title}
+                                </div>
+                            </div>
+                        `;
+
+                        bookCard.innerHTML = `
+                            ${bookCoverHTML}
+                            <div class="book-info">
+                                <h3>${book.title}</h3>
+                                <p>${book.author}</p>
+                                <p>${book.price}</p>
+                                <div class="rating">
+                                    ${generateRatingStars(book.rating)}
+                                </div>
+                            </div>
+                        `;
+
+                        // Add error handler for image loading if we have an image path
+                        if (imagePath) {
+                            const coverDiv = bookCard.querySelector('.book-cover');
+                            const img = new Image();
+                            img.onload = function() {
+                                // Image loaded successfully, hide fallback
+                                coverDiv.querySelector('.fallback-cover').style.display = 'none';
+                            };
+                            img.onerror = function() {
+                                // Image failed to load, show fallback
+                                coverDiv.querySelector('.fallback-cover').style.display = 'flex';
+                            };
+                            img.src = imagePath;
+                        }
+
+                        booksContainer.appendChild(bookCard);
+                    });
+                } else {
+                    // If no books found for this combination
+                    document.querySelector('.results-section h2').textContent =
+                        `Inga böcker hittades för ${genre} och ${mood}`;
+                }
+            }
+
+            // Function to generate rating stars HTML
+            function generateRatingStars(rating) {
+                let starsHTML = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= rating) {
+                        starsHTML += '<i class="fas fa-star"></i>';
+                    } else {
+                        starsHTML += '<i class="far fa-star"></i>';
+                    }
+                }
+                return starsHTML;
+            }
+        });
+    </script>
+    <script src="../js/navigation.js"></script>
+</body>
+</html>

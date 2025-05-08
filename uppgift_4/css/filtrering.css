@@ -1,0 +1,194 @@
+/* Styles for the Filtrering & Sökning page */
+
+.filter-section {
+    margin-bottom: 30px;
+}
+
+.filter-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.filter-group {
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.filter-group:last-of-type {
+    border-bottom: none;
+}
+
+.filter-group h3 {
+    color: var(--primary-brown);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.filter-option input {
+    margin-right: 10px;
+}
+
+.filter-option span {
+    color: var(--text-dark);
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.apply-filter-btn {
+    background-color: var(--accent-orange);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    flex: 1;
+}
+
+.reset-filter-btn {
+    background-color: var(--background-beige);
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    flex: 1;
+}
+
+/* Sort section */
+.sort-section {
+    margin-bottom: 30px;
+}
+
+.sort-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.sort-container h3 {
+    color: var(--primary-brown);
+    margin: 0;
+    font-size: 1.2rem;
+    white-space: nowrap;
+}
+
+.sort-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.sort-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sort-option input {
+    margin-right: 8px;
+}
+
+.sort-option span {
+    color: var(--text-dark);
+}
+
+/* Results section */
+.results-section {
+    margin-bottom: 40px;
+}
+
+.results-section h2 {
+    font-size: 1.8rem;
+    color: var(--primary-brown);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--accent-orange);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.book-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+}
+
+.book-cover {
+    width: 100%;
+    height: 200px;
+    background-color: var(--primary-brown);
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.book-info h3 {
+    margin: 0 0 5px 0;
+    color: var(--primary-brown);
+}
+
+.book-info p {
+    margin: 0 0 10px 0;
+    color: var(--text-dark);
+}
+
+.book-format, .book-genre {
+    display: inline-block;
+    background-color: var(--background-beige);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+    margin-top: 5px;
+    color: var(--text-dark);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sort-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .sort-options {
+        flex-direction: column;
+        width: 100%;
+    }
+}

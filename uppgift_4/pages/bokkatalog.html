@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bokkatalog</title>
+    <link rel="stylesheet" href="../css/../css/bokkatalog.css">
+    <link rel="stylesheet" href="../css/../css/navigation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><a href="../index.html"><img src="../images/logo.svg" alt="Books Logo" width="150"></a></div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Sök">
+                <button class="search-button"><i class="fas fa-search"></i></button>
+            </div>
+            <button class="menu-button"><i class="fas fa-bars"></i></button>
+        </header>
+
+        <h1 class="title">Bokkatalog</h1>
+
+        <div class="content">
+            <main class="main-content">
+                <div class="controls">
+                    <div class="filter-control dropdown">
+                        <button class="dropdown-toggle">
+                            <span>Filter</span>
+                            <i class="fas fa-sliders-h"></i>
+                        </button>
+                        <div class="dropdown-menu filter-menu">
+                            <div class="filter-section">
+                                <h4>År</h4>
+                                <input type="text" id="filter-year" placeholder="Filtrera efter år">
+                            </div>
+                            <div class="filter-section">
+                                <h4>Författare</h4>
+                                <input type="text" id="filter-author" placeholder="Filtrera efter författare">
+                            </div>
+                            <div class="filter-section">
+                                <h4>Genre</h4>
+                                <div class="filter-option">
+                                    <label>
+                                        <input type="checkbox" value="Skönlitteratur"> Skönlitteratur
+                                    </label>
+                                </div>
+                                <div class="filter-option">
+                                    <label>
+                                        <input type="checkbox" value="Facklitteratur"> Facklitteratur
+                                    </label>
+                                </div>
+                                <div class="filter-option">
+                                    <label>
+                                        <input type="checkbox" value="Barnböcker"> Barnböcker
+                                    </label>
+                                </div>
+                                <div class="filter-option">
+                                    <label>
+                                        <input type="checkbox" value="E-böcker"> E-böcker
+                                    </label>
+                                </div>
+                                <div class="filter-option">
+                                    <label>
+                                        <input type="checkbox" value="Ljudböcker"> Ljudböcker
+                                    </label>
+                                </div>
+                                <div class="filter-option">
+                                    <label>
+                                        <input type="checkbox" value="Pocket"> Pocket
+                                    </label>
+                                </div>
+                                <div class="filter-option">
+                                    <label>
+                                        <input type="checkbox" value="Deckare"> Deckare
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="filter-actions">
+                                <button class="apply-filter-btn">Använd filter</button>
+                                <button class="reset-filter-btn">Återställ</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-control">
+                        <input type="text" placeholder="Sök">
+                    </div>
+                    <div class="sort-control dropdown">
+                        <button class="dropdown-toggle">Sortera</button>
+                        <div class="dropdown-menu sort-menu">
+                            <div class="sort-menu-option">A→Z</div>
+                            <div class="sort-menu-option">Z→A</div>
+                            <div class="sort-menu-option">Författare</div>
+                            <div class="sort-menu-option">År</div>
+                            <div class="sort-menu-option">Pris: Lågt till högt</div>
+                            <div class="sort-menu-option">Pris: Högt till lågt</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-grid">
+                    <!-- Book cards will be dynamically generated by JavaScript -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Toggle dropdown menus
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+
+                toggle.addEventListener('click', function(event) {
+                    // Prevent the click from propagating to document
+                    event.stopPropagation();
+
+                    // Close all other dropdowns
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('open');
+                        }
+                    });
+
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('open');
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('open');
+                    });
+                }
+            });
+        });
+    </script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/bokkatalog.js"></script>
+</body>
+</html>
+
+

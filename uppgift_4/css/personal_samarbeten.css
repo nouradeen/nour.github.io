@@ -1,0 +1,194 @@
+/* Styles for the Personal & Samarbeten page */
+
+.team-section {
+    margin-bottom: 40px;
+}
+
+.team-section h2 {
+    font-size: 1.8rem;
+    color: var(--primary-brown);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--accent-orange);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.team-member {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.member-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: var(--background-beige);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+.member-avatar i {
+    font-size: 2rem;
+    color: var(--primary-brown);
+}
+
+.member-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--primary-brown);
+    margin-bottom: 5px;
+}
+
+.member-title {
+    color: var(--accent-orange);
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.member-description {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+/* Partners section */
+.partners-section {
+    margin-bottom: 40px;
+}
+
+.partners-section h2 {
+    font-size: 1.8rem;
+    color: var(--primary-brown);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--accent-orange);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.partners {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.partner {
+    flex: 1;
+    min-width: 250px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.partner-logo {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-brown);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.partner-logo i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.partner h3 {
+    color: var(--primary-brown);
+    margin-bottom: 10px;
+}
+
+.partner p {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Join section */
+.join-section {
+    margin-bottom: 40px;
+}
+
+.join-section h2 {
+    font-size: 1.8rem;
+    color: var(--primary-brown);
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--accent-orange);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.join-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.join-text {
+    flex: 2;
+}
+
+.join-text p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.join-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    color: var(--accent-orange);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .team-members {
+        justify-content: center;
+    }
+    
+    .team-member {
+        min-width: 100%;
+    }
+    
+    .partners {
+        flex-direction: column;
+    }
+    
+    .partner {
+        min-width: 100%;
+    }
+    
+    .join-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}

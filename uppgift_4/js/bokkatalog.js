@@ -1,7 +1,11 @@
-// bokkatalog.js - Functionality for the book catalog page
+// bokkatalog.js - Funktionalitet för bokkatalogssidan
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Book data - in a real application, this would come from a database
+    // Kontrollera om det finns en sökparameter i URL:en
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get('search');
+
+    // Bokdata - i en riktig applikation skulle detta komma från en databas
     const books = [
         {
             id: 1,
@@ -95,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
 
-    // DOM Elements
+    // DOM-element som används i skriptet
     const bookGrid = document.querySelector('.book-grid');
     const headerSearchInput = document.querySelector('header .search-input');
     const headerSearchButton = document.querySelector('header .search-button');
@@ -107,24 +111,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const resetFilterBtn = document.querySelector('.reset-filter-btn');
     const sortOptions = document.querySelectorAll('.sort-menu-option');
 
-    // Current filter and sort state
+    // Aktuellt tillstånd för filter och sortering
     let currentFilters = {
-        year: '',
-        author: '',
-        genres: []
+        year: '',        // Årtal att filtrera på
+        author: '',      // Författare att filtrera på
+        genres: []       // Lista med genrer att filtrera på
     };
-    let currentSort = 'default';
-    let searchTerm = '';
+    let currentSort = 'default';  // Aktuell sorteringsmetod
+    let searchTerm = '';          // Aktuell sökterm
 
-    // Initialize the book grid with data attributes
+    // Initialisera bokrutnätet med data-attribut
     function initializeBookGrid() {
-        // Clear existing book grid
+        // Rensa befintligt bokrutnät
         bookGrid.innerHTML = '';
 
-        // Create book cards with data attributes
+        // Skapa bokkort med data-attribut för varje bok
         books.forEach(book => {
             const bookCard = document.createElement('div');
             bookCard.className = 'book-card';
+            // Lägg till data-attribut för filtrering och sortering
             bookCard.dataset.id = book.id;
             bookCard.dataset.title = book.title;
             bookCard.dataset.author = book.author;
@@ -132,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
             bookCard.dataset.year = book.year;
             bookCard.dataset.genre = book.genre;
 
+            // Skapa HTML-innehåll för bokkortet
             bookCard.innerHTML = `
                 <div class="book-cover" style="background-image: url('${book.cover}'); background-size: cover; background-position: center;"></div>
                 <div class="book-info">
@@ -141,39 +147,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
 
+            // Lägg till bokkortet i rutnätet
             bookGrid.appendChild(bookCard);
         });
     }
 
-    // Filter books based on current filters and search term
+    // Filtrera böcker baserat på aktuella filter och sökterm
     function filterBooks() {
         const bookCards = document.querySelectorAll('.book-card');
         let visibleCount = 0;
 
+        // Gå igenom alla bokkort och kontrollera om de matchar filtren
         bookCards.forEach(card => {
+            // Hämta data från bokkortets attribut
             const title = card.dataset.title.toLowerCase();
             const author = card.dataset.author.toLowerCase();
             const year = card.dataset.year;
             const genre = card.dataset.genre;
 
-            // Check if book matches search term
+            // Kontrollera om boken matchar söktermen
             const matchesSearch = searchTerm === '' ||
                 title.includes(searchTerm.toLowerCase()) ||
                 author.includes(searchTerm.toLowerCase());
 
-            // Check if book matches year filter
+            // Kontrollera om boken matchar årsfilter
             const matchesYear = currentFilters.year === '' ||
                 year.includes(currentFilters.year);
 
-            // Check if book matches author filter
+            // Kontrollera om boken matchar författarfilter
             const matchesAuthor = currentFilters.author === '' ||
                 author.includes(currentFilters.author.toLowerCase());
 
-            // Check if book matches genre filter
+            // Kontrollera om boken matchar genrefilter
             const matchesGenre = currentFilters.genres.length === 0 ||
                 currentFilters.genres.includes(genre);
 
-            // Show/hide book based on all filters
+            // Visa/dölj bok baserat på alla filter
             if (matchesSearch && matchesYear && matchesAuthor && matchesGenre) {
                 card.style.display = 'block';
                 visibleCount++;
@@ -182,10 +191,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Show/hide no results message
+        // Visa/dölj meddelande om inga resultat hittades
         let noResultsMsg = document.querySelector('.no-results-message');
 
         if (visibleCount === 0) {
+            // Om inga böcker visas och inget meddelande finns, skapa ett
             if (!noResultsMsg) {
                 noResultsMsg = document.createElement('div');
                 noResultsMsg.className = 'no-results-message';
@@ -197,119 +207,131 @@ document.addEventListener('DOMContentLoaded', function() {
                 bookGrid.appendChild(noResultsMsg);
             }
         } else if (noResultsMsg) {
+            // Ta bort meddelandet om det finns böcker att visa
             noResultsMsg.remove();
         }
     }
 
-    // Sort books based on current sort option
+    // Sortera böcker baserat på aktuellt sorteringsalternativ
     function sortBooks() {
+        // Konvertera NodeList till Array för att kunna använda sort-metoden
         const bookCards = Array.from(document.querySelectorAll('.book-card'));
 
-        // Sort based on selected option
+        // Sortera baserat på valt alternativ
         switch (currentSort) {
             case 'a-z':
+                // Sortera alfabetiskt A till Ö
                 bookCards.sort((a, b) => a.dataset.title.localeCompare(b.dataset.title));
                 break;
             case 'z-a':
+                // Sortera alfabetiskt Ö till A
                 bookCards.sort((a, b) => b.dataset.title.localeCompare(a.dataset.title));
                 break;
             case 'author':
+                // Sortera efter författare
                 bookCards.sort((a, b) => a.dataset.author.localeCompare(b.dataset.author));
                 break;
             case 'year':
+                // Sortera efter år (nyast först)
                 bookCards.sort((a, b) => b.dataset.year - a.dataset.year);
                 break;
             case 'price-low-high':
+                // Sortera efter pris (lägst först)
                 bookCards.sort((a, b) => a.dataset.price - b.dataset.price);
                 break;
             case 'price-high-low':
+                // Sortera efter pris (högst först)
                 bookCards.sort((a, b) => b.dataset.price - a.dataset.price);
                 break;
             default:
-                // Default sort (by ID)
+                // Standardsortering (efter ID)
                 bookCards.sort((a, b) => a.dataset.id - b.dataset.id);
         }
 
-        // Re-append sorted cards to the grid
+        // Lägg till de sorterade korten i rutnätet igen
         bookCards.forEach(card => {
             bookGrid.appendChild(card);
         });
     }
 
-    // Apply filters and sort
+    // Tillämpa filter och sortering
     function applyFiltersAndSort() {
         filterBooks();
         sortBooks();
     }
 
-    // Reset all filters and search
+    // Återställ alla filter och sökningar
     function resetFilters() {
-        // Clear filter inputs
+        // Rensa filterinmatningsfält
         filterYearInput.value = '';
         filterAuthorInput.value = '';
 
-        // Uncheck all genre checkboxes
+        // Avmarkera alla genrekriterier
         genreCheckboxes.forEach(checkbox => {
             checkbox.checked = false;
         });
 
-        // Reset filter state
+        // Återställ filtertillstånd
         currentFilters = {
             year: '',
             author: '',
             genres: []
         };
 
-        // Reset search
+        // Återställ sökning
         searchTerm = '';
         headerSearchInput.value = '';
         controlsSearchInput.value = '';
 
-        // Reset sort to default
+        // Återställ sortering till standard
         currentSort = 'default';
 
-        // Remove active class from all sort options
+        // Ta bort aktiv klass från alla sorteringsalternativ
         sortOptions.forEach(option => {
             option.classList.remove('active');
         });
 
-        // Apply the reset
+        // Tillämpa återställningen
         applyFiltersAndSort();
     }
 
-    // Event Listeners
+    // Händelselyssnare för användarinteraktioner
 
-    // Header search
+    // Sökfunktion i sidhuvudet
     headerSearchButton.addEventListener('click', function() {
+        // Uppdatera söktermen när användaren klickar på sökknappen
         searchTerm = headerSearchInput.value.trim();
-        controlsSearchInput.value = searchTerm; // Sync both search inputs
+        controlsSearchInput.value = searchTerm; // Synkronisera båda sökfälten
         applyFiltersAndSort();
     });
 
+    // Sökfunktion i sidhuvudet med Enter-tangenten
     headerSearchInput.addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
+            // Uppdatera söktermen när användaren trycker Enter
             searchTerm = headerSearchInput.value.trim();
-            controlsSearchInput.value = searchTerm; // Sync both search inputs
+            controlsSearchInput.value = searchTerm; // Synkronisera båda sökfälten
             applyFiltersAndSort();
         }
     });
 
-    // Controls search
+    // Sökfunktion i kontrollpanelen
     controlsSearchInput.addEventListener('input', function() {
+        // Uppdatera söktermen när användaren skriver i sökfältet
         searchTerm = controlsSearchInput.value.trim();
-        headerSearchInput.value = searchTerm; // Sync both search inputs
+        headerSearchInput.value = searchTerm; // Synkronisera båda sökfälten
         applyFiltersAndSort();
     });
 
-    // Apply filter button
+    // Knapp för att tillämpa filter
     applyFilterBtn.addEventListener('click', function() {
-        // Get year filter
+        // Hämta årsfilter
         currentFilters.year = filterYearInput.value.trim();
 
-        // Get author filter
+        // Hämta författarfilter
         currentFilters.author = filterAuthorInput.value.trim();
 
-        // Get genre filters
+        // Hämta genrefilter från kryssrutor
         currentFilters.genres = [];
         genreCheckboxes.forEach(checkbox => {
             if (checkbox.checked) {
@@ -317,32 +339,34 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
+        // Tillämpa filter och sortering
         applyFiltersAndSort();
 
-        // Close the dropdown after applying filters
+        // Stäng rullgardinsmenyn efter att filter tillämpats
         document.querySelector('.filter-control.dropdown').classList.remove('open');
     });
 
-    // Reset filter button
+    // Knapp för att återställa filter
     resetFilterBtn.addEventListener('click', function() {
+        // Återställ alla filter
         resetFilters();
 
-        // Close the dropdown after resetting filters
+        // Stäng rullgardinsmenyn efter återställning
         document.querySelector('.filter-control.dropdown').classList.remove('open');
     });
 
-    // Sort options
+    // Sorteringsalternativ
     sortOptions.forEach(option => {
         option.addEventListener('click', function() {
             const sortText = this.textContent.trim();
 
-            // Remove active class from all options
+            // Ta bort aktiv klass från alla alternativ
             sortOptions.forEach(opt => opt.classList.remove('active'));
 
-            // Add active class to selected option
+            // Lägg till aktiv klass på valt alternativ
             this.classList.add('active');
 
-            // Set current sort based on option text
+            // Sätt aktuell sortering baserat på alternativets text
             switch (sortText) {
                 case 'A→Z':
                     currentSort = 'a-z';
@@ -364,13 +388,26 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
             }
 
+            // Tillämpa sortering
             applyFiltersAndSort();
 
-            // Close the dropdown after selecting a sort option
+            // Stäng rullgardinsmenyn efter val av sortering
             document.querySelector('.sort-control.dropdown').classList.remove('open');
         });
     });
 
-    // Initialize the book grid
+    // Initialisera bokrutnätet när sidan laddas
     initializeBookGrid();
+
+    // Tillämpa sökparameter från URL om den finns
+    if (searchParam) {
+        // Sätt söktermen från URL-parametern
+        searchTerm = searchParam;
+        headerSearchInput.value = searchTerm;
+        if (controlsSearchInput) {
+            controlsSearchInput.value = searchTerm;
+        }
+        // Tillämpa filter och sortering med söktermen
+        applyFiltersAndSort();
+    }
 });

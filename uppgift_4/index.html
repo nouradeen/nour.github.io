@@ -9,29 +9,32 @@
     <link rel="stylesheet" href="css/bokkatalog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Additional styles specific to the home page */
+        /* Ytterligare stilar specifika för startsidan */
         .home-header {
             text-align: center;
             margin-bottom: 30px;
         }
 
+        /* Rutnät för nyhetsartiklar */
         .news-section {
             display: grid;
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
 
+        /* Stilar för prisvisning */
         .price {
             font-weight: bold;
             color: var(--accent-orange);
             margin-top: 10px;
         }
 
-        /* Remove underlines from links */
+        /* Ta bort understrykningar från länkar */
         a {
             text-decoration: none;
         }
 
-        /* Override header styles to match bokkatalog.html */
+        /* Åsidosätt header-stilar för att matcha bokkatalog.html */
         header {
             background-color: transparent;
             border-bottom: 1px solid var(--border-color);
@@ -42,7 +45,7 @@
             margin-bottom: 20px;
         }
 
-        /* Responsive styles for featured book */
+        /* Responsiva stilar för dagens bok-sektionen */
         @media (max-width: 768px) {
             .featured-book {
                 flex-direction: column;
@@ -61,7 +64,7 @@
         <header>
             <div class="logo"><a href="index.html"><img src="images/logo.svg" alt="Books Logo" width="150"></a></div>
             <div class="search-container">
-                <input type="text" class="search-input" placeholder="Sök">
+                <input type="text" class="search-input" placeholder="Sök" data-translate-placeholder="Sök">
                 <button class="search-button"><i class="fas fa-search"></i></button>
             </div>
             <button class="menu-button"><i class="fas fa-bars"></i></button>
@@ -114,10 +117,10 @@
             </section>
 
             <section class="main-content">
-                <h2>Nyheter</h2>
+                <h2 data-translate="Nyheter">Nyheter</h2>
                 <div class="news-section">
                     <div class="book-card">
-                        <div class="book-cover" style="background-image: url('images/vindens skugga.jpg'); background-size: cover; background-position: center;"></div>
+                        <div class="book-cover" style="background-image: url('images/Ny bokutgivning.jpg'); background-size: cover; background-position: center;"></div>
                         <div class="book-info">
                             <h3>Ny bokutgivning</h3>
                             <p>Vindens Skugga av Stieg Larsson nu tillgänglig!</p>
@@ -125,11 +128,19 @@
                         </div>
                     </div>
                     <div class="book-card">
-                        <div class="book-cover" style="background-image: url('images/glasbarnen.jpg'); background-size: cover; background-position: center;"></div>
+                        <div class="book-cover" style="background-image: url('images/Författarbesök.jpg'); background-size: cover; background-position: center;"></div>
                         <div class="book-info">
                             <h3>Författarbesök</h3>
                             <p>Kristina Ohlsson signerar Glasbarnen den 15 maj</p>
                             <p class="price">179 kr</p>
+                        </div>
+                    </div>
+                    <div class="book-card">
+                        <div class="book-cover" style="background-image: url('images/New Book Section.jpg'); background-size: cover; background-position: center;"></div>
+                        <div class="book-info">
+                            <h3 data-translate="Ny bokavdelning!">Ny bokavdelning!</h3>
+                            <p data-translate="Vi har utökat vår avdelning för internationell litteratur med böcker från hela världen. Besök oss och upptäck nya favoriter!">Vi har utökat vår avdelning för internationell litteratur med böcker från hela världen. Besök oss och upptäck nya favoriter!</p>
+                            <p class="price" style="color: var(--primary-brown);" data-translate="Nyhet">Nyhet</p>
                         </div>
                     </div>
                 </div>
@@ -146,9 +157,11 @@
             <a href="pages/nyhetsbrev.html">Nyhetsbrev</a>
         </div>
         <p>Legal information</p>
-        <p>© 2023 Nour Al Dine Hassan</p>
+        <p>© 2025 Nour Hassan</p>
     </footer>
 
+    <script src="js/language.js"></script>
     <script src="js/navigation.js"></script>
+    <script src="js/search.js"></script>
 </body>
 </html>

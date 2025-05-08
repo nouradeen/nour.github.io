@@ -1,9 +1,11 @@
-/* Styles for the language settings pages */
+/* Stilar för språkinställningssidorna */
 
+/* Sektion för språkval */
 .language-section {
     margin-bottom: 40px;
 }
 
+/* Rubrik för språkvalssektionen */
 .language-section h2 {
     font-size: 1.8rem;
     color: var(--primary-brown);
@@ -13,12 +15,14 @@
     display: inline-block;
 }
 
+/* Container för språkalternativ */
 .language-options {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
 }
 
+/* Individuellt språkalternativ */
 .language-option {
     flex: 1;
     min-width: 250px;
@@ -29,39 +33,45 @@
     position: relative;
 }
 
+/* Markering för aktivt språk */
 .language-option.active {
     border: 2px solid var(--accent-orange);
 }
 
+/* Länk för språkbyte */
 .language-link {
     text-decoration: none;
     color: inherit;
     display: block;
 }
 
+/* Flaggikon för språk */
 .language-flag {
     font-size: 2rem;
     color: var(--accent-orange);
     margin-bottom: 15px;
 }
 
+/* Rubrik för språkalternativ */
 .language-option h3 {
     margin-bottom: 10px;
     color: var(--primary-brown);
 }
 
+/* Beskrivningstext för språkalternativ */
 .language-option p {
     color: var(--text-dark);
     opacity: 0.8;
 }
 
+/* Indikator för valt språk */
 .selected-indicator {
     margin-top: 15px;
     color: var(--accent-orange);
     font-weight: bold;
 }
 
-/* Info section */
+/* Informationssektion */
 .info-section {
     margin-bottom: 40px;
     background-color: white;
@@ -70,6 +80,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Rubrik för informationssektionen */
 .info-section h2 {
     font-size: 1.5rem;
     color: var(--primary-brown);
@@ -77,18 +88,20 @@
     margin-bottom: 15px;
 }
 
+/* Brödtext i informationssektionen */
 .info-section p {
     margin-bottom: 15px;
     line-height: 1.6;
     color: var(--text-dark);
 }
 
-/* Action section */
+/* Åtgärdssektion */
 .action-section {
     margin-bottom: 40px;
     text-align: center;
 }
 
+/* Tillbakaknapp */
 .back-button {
     display: inline-block;
     background-color: var(--primary-brown);
@@ -100,20 +113,22 @@
     transition: background-color 0.3s;
 }
 
+/* Hover-effekt för tillbakaknappen */
 .back-button:hover {
     background-color: var(--accent-orange);
 }
 
+/* Ikon i tillbakaknappen */
 .back-button i {
     margin-right: 8px;
 }
 
-/* Responsive adjustments */
+/* Responsiva justeringar */
 @media (max-width: 768px) {
     .language-options {
         flex-direction: column;
     }
-    
+
     .language-option {
         min-width: 100%;
     }

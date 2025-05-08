@@ -1,11 +1,13 @@
-/* style.css */
+/* style.css - Huvudstilmall för webbplatsen */
+/* Färgvariabler för hela webbplatsen */
 :root {
-    --primary-brown: #3D2C1B;
-    --accent-orange: #FF6B35;
-    --background-beige: #F4E9DA;
-    --text-dark: #2D2D2D;
+    --primary-brown: #3D2C1B;    /* Primär brun färg för rubriker och header */
+    --accent-orange: #FF6B35;    /* Accentfärg för knappar och viktiga element */
+    --background-beige: #F4E9DA; /* Bakgrundsfärg för hela sidan */
+    --text-dark: #2D2D2D;        /* Textfärg för läsbarhet */
 }
 
+/* Grundläggande stilar för body-elementet */
 body {
     font-family: 'Open Sans', sans-serif;
     color: var(--text-dark);
@@ -14,11 +16,13 @@ body {
     background-color: var(--background-beige);
 }
 
+/* Stilar för sidhuvudet */
 header {
     background-color: var(--primary-brown);
     padding: 1rem;
 }
 
+/* Logotypens utseende */
 .logo {
     font-family: 'Merriweather', serif;
     color: white;
@@ -26,6 +30,7 @@ header {
     margin: 0;
 }
 
+/* Navigeringsmeny */
 nav {
     display: flex;
     justify-content: space-between;
@@ -34,17 +39,20 @@ nav {
     margin: 0 auto;
 }
 
+/* Lista med navigationslänkar */
 .nav-links {
     display: flex;
     gap: 2rem;
     list-style: none;
 }
 
+/* Utseende för navigationslänkar */
 .nav-links a {
     color: white;
     text-decoration: none;
 }
 
+/* Hero-sektion med bakgrundsbild och gradient */
 .hero {
     background: linear-gradient(rgba(61, 44, 27, 0.8), rgba(61, 44, 27, 0.8)),
                 url('books-bg.jpg') center/cover;
@@ -53,11 +61,13 @@ nav {
     text-align: center;
 }
 
+/* Container för dagens bokval */
 .dagens-bok {
     max-width: 800px;
     margin: 0 auto;
 }
 
+/* Rutnät för bokvisning */
 .bok-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -67,6 +77,7 @@ nav {
     margin: 0 auto;
 }
 
+/* Individuellt bokkort */
 .bok-kort {
     background: white;
     padding: 1rem;
@@ -74,12 +85,14 @@ nav {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Sektion för nyheter */
 .nyheter {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
 
+/* Sidfot */
 footer {
     background-color: var(--primary-brown);
     color: white;
@@ -87,10 +100,11 @@ footer {
     margin-top: 4rem;
 }
 
+/* Nyhetsbrevsektion */
 .nyhetsbrev {
     text-align: center;
     max-width: 600px;
     margin: 0 auto 2rem;
 }
 
-/* Add more styles as needed */
+/* Lägg till fler stilar efter behov */

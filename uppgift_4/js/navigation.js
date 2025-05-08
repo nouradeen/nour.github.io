@@ -1,35 +1,37 @@
-// navigation.js - Common navigation component for all pages
+// navigation.js - Gemensam navigeringskomponent för alla sidor
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Create global navigation menu as a side panel
+    // Kontrollera om language.js är laddad
+    const isLanguageUtilsLoaded = typeof window.languageUtils !== 'undefined';
+    // Skapa global navigeringsmeny som en sidopanel
     const createGlobalMenu = () => {
-        // Create overlay for when side panel is open
+        // Skapa överlägg för när sidopanelen är öppen
         const overlay = document.createElement('div');
         overlay.className = 'nav-overlay';
         document.body.appendChild(overlay);
 
-        // Create the side panel navigation container
+        // Skapa sidopanelens navigeringscontainer
         const navContainer = document.createElement('nav');
         navContainer.className = 'global-menu';
 
-        // Add close button to the side panel
+        // Lägg till stängknapp på sidopanelen
         const closeButton = document.createElement('button');
         closeButton.className = 'close-nav';
         closeButton.innerHTML = '<i class="fas fa-times"></i>';
         closeButton.addEventListener('click', toggleSidePanel);
         navContainer.appendChild(closeButton);
 
-        // Create navigation links list
+        // Skapa lista för navigeringslänkar
         const navList = document.createElement('ul');
         navList.className = 'nav-links';
 
-        // Check if we're in the pages directory or root directory
-        // Handle both forward and backslashes for cross-platform compatibility
+        // Kontrollera om vi är i pages-katalogen eller rotkatalogen
+        // Hantera både framåt- och bakåtsnedstreck för plattformsoberoende
         const isInPagesDir = window.location.pathname.includes('/pages/') || window.location.pathname.includes('\\pages\\');
         const rootPrefix = isInPagesDir ? '../' : '';
         const pagesPrefix = isInPagesDir ? '' : 'pages/';
 
-        // Define main navigation items
+        // Definiera huvudnavigeringsobjekt
         const navItems = [
             { text: 'Startsida', href: `${rootPrefix}index.html` },
             { text: 'Bokkatalog', href: `${pagesPrefix}bokkatalog.html` },
@@ -39,22 +41,29 @@ document.addEventListener('DOMContentLoaded', function() {
             { text: 'Kontakt', href: `${pagesPrefix}kontakt.html` }
         ];
 
-        // Create list items for each navigation item
+        // Skapa listobjekt för varje navigeringsobjekt
         navItems.forEach(item => {
             const li = document.createElement('li');
             const a = document.createElement('a');
+
+            // Sätt originaltext och gör den översättningsbar
             a.textContent = item.text;
+            if (isLanguageUtilsLoaded) {
+                a.setAttribute('data-translate', item.text);
+                a.textContent = window.languageUtils.translateText(item.text);
+            }
+
             a.href = item.href;
 
-            // Highlight current page
-            const currentPath = window.location.pathname.replace(/\\/g, '/'); // Normalize path separators
-            const itemPath = item.href.split('/').pop(); // Get just the filename
+            // Markera aktuell sida
+            const currentPath = window.location.pathname.replace(/\\/g, '/'); // Normalisera sökvägsseparatorer
+            const itemPath = item.href.split('/').pop(); // Hämta bara filnamnet
 
             if (currentPath.includes(itemPath)) {
                 a.classList.add('active');
             }
 
-            // Special case for home page
+            // Specialfall för startsidan
             if (item.text === 'Startsida' && (
                 currentPath.endsWith('/') ||
                 currentPath.endsWith('index.html') ||
@@ -70,43 +79,63 @@ document.addEventListener('DOMContentLoaded', function() {
 
         navContainer.appendChild(navList);
 
-        // Create help menu with language options
+        // Skapa hjälpmeny med språkalternativ
         const helpMenu = document.createElement('div');
         helpMenu.className = 'help-menu';
 
         const helpButton = document.createElement('button');
         helpButton.className = 'help-button';
         helpButton.textContent = 'Hjälp';
+
+        // Gör hjälpknappens text översättningsbar
+        if (isLanguageUtilsLoaded) {
+            helpButton.setAttribute('data-translate', 'Hjälp');
+            helpButton.textContent = window.languageUtils.translateText('Hjälp');
+        }
+
         helpButton.addEventListener('click', toggleHelpMenu);
 
         const helpDropdown = document.createElement('div');
         helpDropdown.className = 'help-dropdown';
 
+        // Definiera språkalternativ med språkkoder
         const languageOptions = [
-            { text: 'Svenska', href: `${pagesPrefix}svenska.html` },
-            { text: 'English', href: `${pagesPrefix}english.html` }
+            { text: 'Svenska', langCode: 'sv' },
+            { text: 'English', langCode: 'en' }
         ];
 
+        // Skapa länkar för språkbyte
         languageOptions.forEach(option => {
             const a = document.createElement('a');
             a.textContent = option.text;
-            a.href = option.href;
+            a.setAttribute('data-lang', option.langCode);
+            a.href = 'javascript:void(0);'; // Förhindra navigering
+
+            // Lägg till klickhändelse för att byta språk
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (isLanguageUtilsLoaded) {
+                    window.languageUtils.setLanguage(option.langCode);
+                    toggleHelpMenu(); // Stäng menyn efter val
+                }
+            });
+
             helpDropdown.appendChild(a);
         });
 
         helpMenu.appendChild(helpButton);
         helpMenu.appendChild(helpDropdown);
 
-        // Add the help menu to the navigation container
+        // Lägg till hjälpmenyn i navigeringscontainern
         navContainer.appendChild(helpMenu);
 
-        // Add the side panel to the body
+        // Lägg till sidopanelen i body
         document.body.appendChild(navContainer);
 
         return navContainer;
     };
 
-    // Toggle help menu visibility
+    // Växla hjälpmenyns synlighet
     const toggleHelpMenu = (event) => {
         if (event) {
             event.stopPropagation();
@@ -115,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
         helpDropdown.classList.toggle('show');
     };
 
-    // Toggle side panel visibility
+    // Växla sidopanelens synlighet
     const toggleSidePanel = () => {
         const sidePanel = document.querySelector('.global-menu');
         const overlay = document.querySelector('.nav-overlay');
@@ -123,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sidePanel.classList.toggle('open');
         overlay.classList.toggle('open');
 
-        // Toggle body scroll when side panel is open
+        // Växla body-scrollning när sidopanelen är öppen
         if (sidePanel.classList.contains('open')) {
             document.body.style.overflow = 'hidden';
         } else {
@@ -131,22 +160,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Create the side panel navigation
+    // Skapa sidopanelsnavigering
     createGlobalMenu();
 
-    // Add event listener to burger menu button
+    // Lägg till händelselyssnare för hamburgermenyn
     const menuButton = document.querySelector('.menu-button');
     if (menuButton) {
         menuButton.addEventListener('click', toggleSidePanel);
     }
 
-    // Add event listener to overlay to close side panel when clicking outside
+    // Lägg till händelselyssnare för att stänga sidopanelen när man klickar utanför
     const overlay = document.querySelector('.nav-overlay');
     if (overlay) {
         overlay.addEventListener('click', toggleSidePanel);
     }
 
-    // Add event listener to close help menu when clicking outside
+    // Lägg till händelselyssnare för att stänga hjälpmenyn när man klickar utanför
     document.addEventListener('click', function(event) {
         if (!event.target.matches('.help-button')) {
             const dropdowns = document.getElementsByClassName('help-dropdown');
@@ -158,4 +187,32 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    // Lyssna efter språkändringshändelser
+    if (isLanguageUtilsLoaded) {
+        document.addEventListener('languageChanged', function(event) {
+            // Uppdatera sökfältets platshållare
+            const searchInputs = document.querySelectorAll('.search-input');
+            searchInputs.forEach(input => {
+                if (input.placeholder === 'Sök' || input.placeholder === 'Search') {
+                    const translatedPlaceholder = window.languageUtils.translateText('Sök');
+                    input.placeholder = translatedPlaceholder;
+                }
+            });
+
+            // Uppdatera hjälpknappens text
+            const helpButton = document.querySelector('.help-button');
+            if (helpButton && helpButton.hasAttribute('data-translate')) {
+                const originalText = helpButton.getAttribute('data-translate');
+                helpButton.textContent = window.languageUtils.translateText(originalText);
+            }
+
+            // Uppdatera navigeringsobjekt
+            const navLinks = document.querySelectorAll('.nav-links a[data-translate]');
+            navLinks.forEach(link => {
+                const originalText = link.getAttribute('data-translate');
+                link.textContent = window.languageUtils.translateText(originalText);
+            });
+        });
+    }
 });

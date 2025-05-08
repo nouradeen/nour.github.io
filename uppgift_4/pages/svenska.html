@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!--
+    Svenska språksidan
+    Denna sida används för att visa webbplatsen på svenska.
+    Språkbyte sker via JavaScript i language.js som sparar valet i localStorage.
+-->
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
@@ -23,9 +28,11 @@
         <h1 class="title">Språkinställningar</h1>
 
         <div class="content">
+            <!-- Sektion för språkval med alternativ för svenska och engelska -->
             <section class="language-section">
                 <h2>Välj Språk</h2>
                 <div class="language-options">
+                    <!-- Aktivt språkalternativ (svenska) -->
                     <div class="language-option active">
                         <div class="language-flag">
                             <i class="fas fa-flag"></i>
@@ -36,6 +43,7 @@
                             <i class="fas fa-check"></i> Valt språk
                         </div>
                     </div>
+                    <!-- Alternativt språk (engelska) med länk -->
                     <div class="language-option">
                         <a href="english.html" class="language-link">
                             <div class="language-flag">
@@ -48,6 +56,7 @@
                 </div>
             </section>
 
+            <!-- Informationssektion med detaljer om språkinställningen -->
             <section class="info-section">
                 <h2>Information</h2>
                 <p>Webbplatsen är för närvarande inställd på svenska. Alla sidor och innehåll kommer att visas på svenska.</p>
@@ -55,6 +64,7 @@
                 <p>Observera att vissa delar av webbplatsen kan vara under översättning och därför kan vissa texter fortfarande visas på originalspråket.</p>
             </section>
 
+            <!-- Sektion med knapp för att återgå till startsidan -->
             <section class="action-section">
                 <a href="../index.html" class="back-button">
                     <i class="fas fa-arrow-left"></i> Tillbaka till startsidan
@@ -63,7 +73,10 @@
         </div>
     </div>
 
+    <!-- JavaScript för språkhantering, navigering och sökning -->
+    <script src="../js/language.js"></script>
     <script src="../js/navigation.js"></script>
+    <script src="../js/search.js"></script>
 </body>
 </html>
 
